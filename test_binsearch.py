@@ -39,4 +39,4 @@ def test_no_needle():
 
 def test_char():
     with raises(TypeError):
-        myaverage([input,'a'])
+        binary_search([input,'a'])
