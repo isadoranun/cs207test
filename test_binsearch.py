@@ -4,6 +4,7 @@ from pytest import raises
 from binsearch import binary_search
 
 input = list(range(10))
+input2 = [1,2,3,4,np.NAN,5]
 
 
 def test_binary_search():
@@ -14,6 +15,13 @@ def test_float():
 
 def test_outside():
     assert binary_search(input, 10) == -1
+
+def test_extreme_left():
+    assert binary_search(input, 0) == 0
+
+
+def test_extreme_right():
+    assert binary_search(input, 9) == 9
     
 def test_one_element():
     assert binary_search([5], 5) == 0
@@ -32,7 +40,10 @@ def test_wrong_left_right():
     
 def test_all_equals():
     assert binary_search(input, 2, 2, 2) == 2
-            
+    
+def test_empty():
+    assert binary_search([], 1) == -1
+
 def test_no_needle():
     with raises(TypeError):
         binary_search(input)
